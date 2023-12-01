@@ -5,8 +5,8 @@ async function main() {
     const file = await fs.open('./input.txt');
     for await (const line of file.readLines()) {
         const reversed = await reverseString(line)
-        const first = await combiner(line)
-        const second = await combiner(reversed)
+        const first = await extendedNumberFinder(line)
+        const second = await extendedNumberFinder(reversed)
         numbers.push(Number(first + second))
     }
 
@@ -14,7 +14,15 @@ async function main() {
     console.log("result is: " + result)
 }
 
-async function combiner(string) { 
+// For Problem 1
+async function numberFinder(string) { 
+  const rx = new RegExp("\\d");
+  let arr = rx.exec(string);
+  return arr[0]; 
+}
+
+// For Problem 2
+async function extendedNumberFinder(string) { 
   const rx = new RegExp("\\d");
   let arr = rx.exec(string);
   return arr[0]; 
