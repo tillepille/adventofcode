@@ -27,7 +27,7 @@ def getPoints(b):
 
 def touching(i):
   if bricks[i][0][2] == 1:
-    return
+    return 1
   else:
     for v in reversed(range(i)):
       if bricks[v][1][2] == bricks[i][0][2] - 1:
